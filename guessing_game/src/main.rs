@@ -22,7 +22,11 @@ fn main() {
         // trim() -> removes \n or \r\n
         // parse() -> parses string into number (in this case -> u32)
         // expect() -> helper functions to
-        let guess: u32 = guess.trim().parse().expect("Please type a number!");
+        // switching from expect() to match
+        let guess: u32 = match guess.trim().parse() {
+            Ok(num) => num,
+            Err(_) => continue,
+        };
 
         println!("You guessed: {}", guess);
 
